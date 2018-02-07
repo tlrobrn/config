@@ -1,39 +1,49 @@
 set nocompatible
 
 " Plugins
-filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'benmills/vimux'
-Plugin 'bling/vim-airline'
-Plugin 'cespare/vim-toml'
-Plugin 'chordpro.vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'lambdatoast/elm.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sebastianmarkow/deoplete-rust'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'xolox/vim-lua-ftplugin'
-Plugin 'xolox/vim-misc'
-Plugin 'w0rp/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-call vundle#end()
-filetype plugin indent on
+"Plug 'Chiel92/vim-autoformat'
+Plug 'benmills/vimux'
+Plug 'bling/vim-airline'
+Plug 'cespare/vim-toml'
+Plug 'flazz/vim-colorschemes'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+
+
+call plug#end()
+
+" rust-lang/rust.vim
+let g:autofmt_autosave = 1
+
+" LanguageClient-neovim
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+
+" Shougo/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
 
 " Customizations
-set hidden " Background buffers w/o saving
 set number " Line numbers
-syntax enable " Syntax highlighting
 silent! colorscheme smyck
 set nowrap
 set showmatch
@@ -66,8 +76,6 @@ set showcmd
 let g:airline_powerline_fonts=1
 let g:airline#extensions#ale#enabled = 1
 
-" Rust
-let g:rustfmt_autosave=1
 
 " Deoplete
 let g:deoplete#enable_at_atartup=1
@@ -81,4 +89,3 @@ noremap <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 noremap <silent> <LocalLeader>nf :NERDTreeFind<CR>
 noremap <silent> <LocalLeader>ff :CtrlP<CR>
 noremap <silent> <LocalLeader>be :CtrlPBuffer<CR>
-noremap <silent> <LocalLeader>lo :!/Applications/love.app/Contents/MacOS/love .<CR>
