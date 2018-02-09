@@ -35,13 +35,6 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
-
-" Shougo/deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-
 " Customizations
 set number " Line numbers
 silent! colorscheme smyck
@@ -74,11 +67,9 @@ set laststatus=2
 set ruler
 set showcmd
 let g:airline_powerline_fonts=1
-let g:airline#extensions#ale#enabled = 1
-
 
 " Deoplete
-let g:deoplete#enable_at_atartup=1
+let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#rust#racer_binary='/Users/tayobrien/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/Users/tayobrien/dev/thirdparty/rust/src'
 let g:deoplete#sources#rust#show_duplicates=1
@@ -89,3 +80,6 @@ noremap <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 noremap <silent> <LocalLeader>nf :NERDTreeFind<CR>
 noremap <silent> <LocalLeader>ff :CtrlP<CR>
 noremap <silent> <LocalLeader>be :CtrlPBuffer<CR>
+nnoremap <silent> H :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
