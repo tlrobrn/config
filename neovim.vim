@@ -20,6 +20,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
 
 call plug#end()
 
@@ -32,6 +34,8 @@ set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio', '--strict'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio', '--strict'],
     \ }
 
 let g:LanguageClient_autoStart = 1
