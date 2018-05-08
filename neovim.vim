@@ -22,6 +22,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
+Plug 'neomake/neomake'
 
 call plug#end()
 
@@ -78,6 +79,9 @@ let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#rust#racer_binary='/Users/tayobrien/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/Users/tayobrien/dev/thirdparty/rust/src'
 let g:deoplete#sources#rust#show_duplicates=1
+
+" Neomake
+call neomake#configure#automake('nw', 750)
 
 " Key bindings
 inoremap <silent>jk <ESC>
