@@ -12,6 +12,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Plug 'Chiel92/vim-autoformat'
 Plug 'benmills/vimux'
+Plug 'janko-m/vim-test'
 Plug 'bling/vim-airline'
 Plug 'cespare/vim-toml'
 Plug 'flazz/vim-colorschemes'
@@ -23,6 +24,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
 Plug 'neomake/neomake'
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
@@ -76,12 +78,22 @@ let g:airline_powerline_fonts=1
 
 " Deoplete
 let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#rust#racer_binary='/Users/tayobrien/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/tayobrien/dev/thirdparty/rust/src'
+let g:deoplete#sources#rust#racer_binary='/Users/taylor/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src'
 let g:deoplete#sources#rust#show_duplicates=1
 
 " Neomake
 call neomake#configure#automake('nw', 750)
+
+" CTRLP
+let g:ctrlp_max_files=0
+
+" Test
+let test#strategy = 'vimux'
+nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
+nnoremap <silent> <leader>rb :wa<CR>:TestFile<CR>
+nnoremap <silent> <leader>ra :wa<CR>:TestSuite<CR>
+nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
 " Key bindings
 inoremap <silent>jk <ESC>
