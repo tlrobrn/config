@@ -10,13 +10,13 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-"Plug 'Chiel92/vim-autoformat'
 Plug 'benmills/vimux'
 Plug 'janko-m/vim-test'
 Plug 'bling/vim-airline'
 Plug 'cespare/vim-toml'
 Plug 'flazz/vim-colorschemes'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
@@ -25,6 +25,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
 Plug 'neomake/neomake'
 Plug 'rizzatti/dash.vim'
+Plug 'slim-template/vim-slim'
 
 call plug#end()
 
@@ -85,9 +86,6 @@ let g:deoplete#sources#rust#show_duplicates=1
 " Neomake
 call neomake#configure#automake('nw', 750)
 
-" CTRLP
-let g:ctrlp_max_files=0
-
 " Test
 let test#strategy = 'vimux'
 nnoremap <silent> <leader>rf :wa<CR>:TestNearest<CR>
@@ -99,8 +97,9 @@ nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 inoremap <silent>jk <ESC>
 noremap <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 noremap <silent> <LocalLeader>nf :NERDTreeFind<CR>
-noremap <silent> <LocalLeader>ff :CtrlP<CR>
-noremap <silent> <LocalLeader>be :CtrlPBuffer<CR>
+noremap <silent> <LocalLeader>ff :Files<CR>
+noremap <silent> <LocalLeader>gf :GFiles<CR>
+noremap <silent> <LocalLeader>be :Buffers<CR>
 nnoremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
