@@ -2,7 +2,10 @@
 # (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
 #         without any warranty.
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
+#
 
+# -- general ----------------------------------------------------------------
+set -sg repeat-time 10                   # increase repeat timeout
 
 # -- navigation ----------------------------------------------------------------
 
@@ -55,7 +58,7 @@ tmux_conf_theme_highlight_focused_pane=false
 
 # focused pane colours:
 tmux_conf_theme_focused_pane_fg='default'
-tmux_conf_theme_focused_pane_bg='#0087d7'               # light blue
+tmux_conf_theme_focused_pane_bg='default'
 
 # pane border style, possible values are:
 #   - thin (default)
@@ -87,7 +90,7 @@ tmux_conf_theme_mode_attr='bold'
 
 # status line style
 tmux_conf_theme_status_fg='#b0b0b0'                     # light gray
-tmux_conf_theme_status_bg='#5d5d5d'                     # dark gray
+tmux_conf_theme_status_bg='#000000'                     # dark gray
 tmux_conf_theme_status_attr='none'
 
 # window status style
@@ -167,7 +170,7 @@ tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
 tmux_conf_theme_status_right_fg='#cdee69,#f7f7f7,#000000' # light gray, white, black
-tmux_conf_theme_status_right_bg='#5d5d5d,#c75646,#f7f7f7' # dark gray, red, white
+tmux_conf_theme_status_right_bg='#000000,#c75646,#f7f7f7' # black, red, white
 tmux_conf_theme_status_right_attr='none,none,bold'
 
 # pairing indicator
@@ -204,7 +207,7 @@ tmux_conf_battery_bar_length='auto'
 #   - heat
 #   - 'colour_full_fg,colour_empty_fg,colour_bg'
 #tmux_conf_battery_bar_palette='gradient'
-tmux_conf_battery_bar_palette='#c75646,#f7f7f7,#5d5d5d'   # red, white, black
+tmux_conf_battery_bar_palette='#c75646,#f7f7f7,#000000'   # red, white, black
 
 # battery hbar palette, possible values are:
 #   - gradient (default)
