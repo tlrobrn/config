@@ -50,7 +50,7 @@ let g:elm_format_autosave = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio', '--strict'],
     \ 'javascript.jsx': ['javascript-typescript-stdio', '--strict'],
     \ }
@@ -108,7 +108,7 @@ let g:fzf_buffers_jump = 1
 " Deoplete
 let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#rust#racer_binary='/Users/taylor/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
 let g:deoplete#sources#rust#show_duplicates=1
 
 " Neomake
