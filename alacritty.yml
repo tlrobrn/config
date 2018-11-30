@@ -309,6 +309,8 @@ shell:
   program: /bin/bash
   args:
     - --login
+    - -c
+    - tmux new-session -A -s $USER
 
 # Key bindings
 #
