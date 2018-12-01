@@ -112,7 +112,7 @@ let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/s
 let g:deoplete#sources#rust#show_duplicates=1
 
 " Neomake
-call neomake#configure#automake('nw', 750)
+call neomake#configure#automake('nw', 500)
 
 " Illuminate
 let g:Illuminate_ftblacklist = ['nerdtree']
