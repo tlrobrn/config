@@ -1,6 +1,6 @@
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export EDITOR=nvim
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden -g "!{.git,node_modules}/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,node_modules}/*"'
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -8,8 +8,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 alias edup="nvim +:PlugUpgrade +:PlugUpdate +:qall"
 alias g="hub"
 alias v="nvim"
-alias ll="ls -lG"
+alias ll="exa -lh"
 alias la="ll -a"
+alias dbup="pg_ctl -D /usr/local/var/postgres start"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash

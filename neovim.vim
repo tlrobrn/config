@@ -21,7 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+"Plug 'slashmili/alchemist.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -53,6 +53,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio', '--strict'],
     \ 'javascript.jsx': ['javascript-typescript-stdio', '--strict'],
+    \ 'elixir': ['elixir-ls'],
     \ }
 
 let g:LanguageClient_autoStart = 1
