@@ -11,6 +11,7 @@ alias v="nvim"
 alias ll="exa -lh"
 alias la="ll -a"
 alias dbup="pg_ctl -D /usr/local/var/postgres start"
+alias weather="curl wttr.in"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash

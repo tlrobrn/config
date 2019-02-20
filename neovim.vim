@@ -4,6 +4,7 @@ set nocompatible
 call plug#begin('~/.config/nvim/bundle')
 
 Plug 'rust-lang/rust.vim'
+Plug 'ron-rs/ron.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -36,6 +37,7 @@ Plug 'jacoborus/tender.vim'
 Plug 'elmcast/elm-vim'
 Plug 'pbogut/deoplete-elm'
 Plug 'rhysd/vim-crystal'
+Plug 'rlue/vim-fold-rspec'
 
 call plug#end()
 
@@ -64,12 +66,14 @@ set relativenumber
 
 " Theme
 silent! colorscheme smyck
+hi Folded cterm=none ctermbg=0 ctermfg=6 gui=none guibg=#8F8F8F guifg=#C4E858
 
 set nowrap
 set showmatch
 set splitbelow
 set splitright
-set cursorline
+au WinEnter * set cursorline
+au WinLeave * set nocursorline nocursorcolumn
 hi Comment cterm=italic
 hi htmlArg cterm=italic
 hi Type cterm=italic
@@ -144,3 +148,4 @@ noremap <silent> <LocalLeader>be :Buffers<CR>
 nnoremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+nnoremap <C-W>z <C-W>\|<C-W>_
