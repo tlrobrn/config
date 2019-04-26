@@ -203,7 +203,6 @@ colors:
   # When these are not set, they're filled with sensible defaults.
   #indexed_colors:
   #  - { index: 16, color: '0x000000' }
-  indexed_colors: []
 
 # Visual Bell
 #
