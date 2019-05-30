@@ -1,6 +1,6 @@
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export EDITOR=nvim
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,node_modules}/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,node_modules,deps,_build,.elixir_ls}/*"'
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
