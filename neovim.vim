@@ -22,7 +22,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
-"Plug 'slashmili/alchemist.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -38,6 +37,7 @@ Plug 'elmcast/elm-vim'
 Plug 'pbogut/deoplete-elm'
 Plug 'rhysd/vim-crystal'
 Plug 'rlue/vim-fold-rspec'
+Plug 'tpope/vim-rails'
 
 call plug#end()
 
