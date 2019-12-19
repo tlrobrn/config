@@ -61,7 +61,7 @@ scrolling:
   # to allow mouse scrolling for applications like `man`.
   #
   # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
+  #faux_multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
@@ -101,9 +101,9 @@ font:
 
   # Bold font face
   bold:
-    family: Dank Mono
+    family: Cascadia Code
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    #style: Regular
 
   # Italic font face
   italic:
@@ -303,12 +303,12 @@ live_config_reload: true
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
-shell:
-  program: /bin/bash
-  args:
-    - --login
-    - -c
-    - tmux new-session -A -s $USER
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
+#    - -c
+#    - tmux new-session -A -s $USER
 
 alt_send_esc: true
 

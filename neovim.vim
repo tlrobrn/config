@@ -38,6 +38,7 @@ Plug 'pbogut/deoplete-elm'
 Plug 'rhysd/vim-crystal'
 Plug 'rlue/vim-fold-rspec'
 Plug 'tpope/vim-rails'
+Plug 'justinj/vim-pico8-syntax'
 
 call plug#end()
 
@@ -56,6 +57,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio', '--strict'],
     \ 'javascript.jsx': ['javascript-typescript-stdio', '--strict'],
     \ 'elixir': ['elixir-ls'],
+    \ 'lua': ['java', '-cp', '/Users/taylor/.config/nvim/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 
 let g:LanguageClient_autoStart = 1
