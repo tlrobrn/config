@@ -12,7 +12,7 @@ export ZSH="/Users/taylor/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bira"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,3 +105,11 @@ source $HOME/.config/zsh/zshrc.user
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Personal
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export RBENV_ROOT=$HOME/.rbenv
+export MYSQL_PORT_3306_TCP_ADDR=127.0.0.1
+export MYSQL_SLAVE_PORT_3306_TCP_ADDR=127.0.0.1
+export MYSQL_SLAVE_PORT_3306_TCP_PORT=3307

@@ -54,11 +54,12 @@ set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio', '--strict'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio', '--strict'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
     \ 'elixir': ['elixir-ls'],
     \ 'lua': ['java', '-cp', '/Users/taylor/.config/nvim/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'ruby': ['/Users/taylor/.rbenv/shims/solargraph', 'stdio'],
+    \ 'crystal': ['/Users/taylor/dev/thirdparty/scry/bin/scry'],
     \ }
 
 let g:LanguageClient_autoStart = 1
