@@ -109,6 +109,8 @@ source $HOME/.config/zsh/zshrc.user
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#export PATH="$PATH:/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin"
+export PATH="$PATH:/Users/taylor/.asdf/installs/lua/5.3.5/luarocks/bin:/Users/taylor/.asdf/installs/lua/5.1/luarocks/bin"
 export RBENV_ROOT=$HOME/.rbenv
 export MYSQL_PORT_3306_TCP_ADDR=127.0.0.1
 export MYSQL_SLAVE_PORT_3306_TCP_ADDR=127.0.0.1

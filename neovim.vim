@@ -3,6 +3,7 @@ set nocompatible
 " Plugins
 call plug#begin('~/.config/nvim/bundle')
 
+Plug 'chr4/nginx.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'ron-rs/ron.vim'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -39,6 +40,9 @@ Plug 'rhysd/vim-crystal'
 Plug 'rlue/vim-fold-rspec'
 Plug 'tpope/vim-rails'
 Plug 'justinj/vim-pico8-syntax'
+Plug 'lluchs/vim-wren'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
@@ -56,10 +60,25 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+    \ 'typescript.ts': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+    \ 'typescriptreact': ['typescript-language-server', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'elixir': ['elixir-ls'],
     \ 'lua': ['java', '-cp', '/Users/taylor/.config/nvim/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
     \ 'ruby': ['/Users/taylor/.rbenv/shims/solargraph', 'stdio'],
     \ 'crystal': ['/Users/taylor/dev/thirdparty/scry/bin/scry'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \       using LanguageServer;
+    \       using Pkg;
+    \       import StaticLint;
+    \       import SymbolServer;
+    \       env_path = dirname(Pkg.Types.Context().env.project_file);
+    \       debug = false; 
+    \       server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
+    \       server.runlinter = true;
+    \       run(server);
+    \   '],
     \ }
 
 let g:LanguageClient_autoStart = 1
@@ -121,7 +140,8 @@ let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/s
 let g:deoplete#sources#rust#show_duplicates=1
 
 " Neomake
-call neomake#configure#automake('nw', 500)
+call neomake#configure#automake('nrwi', 500)
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Illuminate
 let g:Illuminate_ftblacklist = ['nerdtree']
