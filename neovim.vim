@@ -57,7 +57,7 @@ let g:elm_format_autosave = 1
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
     \ 'typescript.ts': ['typescript-language-server', '--stdio'],
