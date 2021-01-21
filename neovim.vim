@@ -3,14 +3,10 @@ set nocompatible
 " Plugins
 call plug#begin('~/.config/nvim/bundle')
 
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'chr4/nginx.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'ron-rs/ron.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'benmills/vimux'
 Plug 'janko-m/vim-test'
@@ -34,8 +30,6 @@ Plug 'rizzatti/dash.vim'
 Plug 'slim-template/vim-slim'
 Plug 'RRethy/vim-illuminate'
 Plug 'jacoborus/tender.vim'
-Plug 'elmcast/elm-vim'
-Plug 'pbogut/deoplete-elm'
 Plug 'rhysd/vim-crystal'
 Plug 'rlue/vim-fold-rspec'
 Plug 'tpope/vim-rails'
@@ -48,40 +42,6 @@ call plug#end()
 
 " rust-lang/rust.vim
 let g:autofmt_autosave = 1
-
-" elm
-let g:elm_format_autosave = 1
-
-" LanguageClient-neovim
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
-    \ 'typescript.ts': ['typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ 'elixir': ['elixir-ls'],
-    \ 'lua': ['java', '-cp', '/Users/taylor/.config/nvim/EmmyLua-LS-all.jar', 'com.tang.vscode.MainKt'],
-    \ 'ruby': ['/Users/taylor/.rbenv/shims/solargraph', 'stdio'],
-    \ 'crystal': ['/Users/taylor/dev/thirdparty/scry/bin/scry'],
-    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
-    \       using LanguageServer;
-    \       using Pkg;
-    \       import StaticLint;
-    \       import SymbolServer;
-    \       env_path = dirname(Pkg.Types.Context().env.project_file);
-    \       debug = false; 
-    \       server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
-    \       server.runlinter = true;
-    \       run(server);
-    \   '],
-    \ }
-
-let g:LanguageClient_autoStart = 1
 
 " Hybrid Line numbers
 set number
@@ -133,11 +93,6 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_buffers_jump = 1
 
-" Deoplete
-let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#rust#racer_binary='/Users/taylor/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/taylor/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
-let g:deoplete#sources#rust#show_duplicates=1
 
 " Neomake
 call neomake#configure#automake('nrwi', 500)
@@ -169,7 +124,20 @@ noremap <silent> <LocalLeader>nf :NERDTreeFind<CR>
 noremap <silent> <LocalLeader>ff :Files<CR>
 noremap <silent> <LocalLeader>gf :GFiles<CR>
 noremap <silent> <LocalLeader>be :Buffers<CR>
-nnoremap <silent> H :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> R :call LanguageClient_textDocument_rename()<CR>
 nnoremap <C-W>z <C-W>\|<C-W>_
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+set hidden
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
