@@ -88,8 +88,8 @@ set incsearch
 set laststatus=2
 set ruler
 set showcmd
-let g:airline_powerline_fonts=1
-let g:airline_theme='term'
+"let g:airline_powerline_fonts=1
+let g:airline_theme='deus'
 
 " FZF
 let g:fzf_action = {
