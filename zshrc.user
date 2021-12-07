@@ -13,6 +13,12 @@ alias weather="curl wttr.in"
 alias gc='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 alias love='/Applications/love.app/Contents/MacOS/love'
 
+# only correct commands not args
+if [[ "$ENABLE_CORRECTION" == "true" ]]; then
+  unsetopt correct_all
+  setopt correct
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 
@@ -20,9 +26,9 @@ vs () {
   workspace=$(ls *.code-workspace | head -n 1)
   if [[ -n $workspace ]]; then
     echo "opening workspace: $workspace"
-    /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron $workspace
+    /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron $workspace & disown
   else
     echo "opening directory: $(pwd)"
-    /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron .
+    /Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron . & disown
   fi
 }

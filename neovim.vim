@@ -48,8 +48,13 @@ set number
 set relativenumber
 
 " Theme
-silent! colorscheme smyck
+silent! colorscheme 256_noir
 hi Folded cterm=none ctermbg=0 ctermfg=6 gui=none guibg=#8F8F8F guifg=#C4E858
+set cursorline
+highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
+autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+hi CursorLineNr    term=bold cterm=bold ctermfg=012 gui=bold
 
 set nowrap
 set showmatch
@@ -132,7 +137,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 set hidden
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -141,3 +146,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" disable python2
+let g:loaded_python_provider = 0
