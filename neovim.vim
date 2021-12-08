@@ -3,52 +3,53 @@ set nocompatible
 " Plugins
 call plug#begin('~/.config/nvim/bundle')
 
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'chr4/nginx.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'ron-rs/ron.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'benmills/vimux'
-Plug 'janko-m/vim-test'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'cespare/vim-toml'
-Plug 'flazz/vim-colorschemes'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'elixir-editors/vim-elixir'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'kchmck/vim-coffee-script'
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
-Plug 'neomake/neomake'
-Plug 'benjie/local-npm-bin.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'slim-template/vim-slim'
-Plug 'RRethy/vim-illuminate'
-Plug 'jacoborus/tender.vim'
-Plug 'rhysd/vim-crystal'
-Plug 'rlue/vim-fold-rspec'
-Plug 'tpope/vim-rails'
-Plug 'justinj/vim-pico8-syntax'
-Plug 'lluchs/vim-wren'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'RRethy/vim-illuminate'
+Plug 'benjie/local-npm-bin.vim'
+Plug 'benmills/vimux'
+Plug 'cespare/vim-toml'
+Plug 'chr4/nginx.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'flazz/vim-colorschemes'
+Plug 'jacoborus/tender.vim'
+Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'justinj/vim-pico8-syntax'
+Plug 'kchmck/vim-coffee-script'
+Plug 'lluchs/vim-wren'
+Plug 'mxw/vim-jsx'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
+Plug 'rhysd/vim-crystal'
+Plug 'rizzatti/dash.vim'
+Plug 'rlue/vim-fold-rspec'
+Plug 'ron-rs/ron.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'slim-template/vim-slim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'haml', 'eruby'] }
 
 call plug#end()
 
 " rust-lang/rust.vim
 let g:autofmt_autosave = 1
+let g:rustfmt_autosave = 1
 
 " Hybrid Line numbers
 set number
 set relativenumber
 
 " Theme
-silent! colorscheme 256_noir
+silent! colorscheme preto
 hi Folded cterm=none ctermbg=0 ctermfg=6 gui=none guibg=#8F8F8F guifg=#C4E858
 set cursorline
 highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
@@ -102,6 +103,7 @@ let g:fzf_buffers_jump = 1
 " Neomake
 call neomake#configure#automake('nrwi', 500)
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_ruby_enabled_makers = ['rubocop', 'mri', 'rubylint']
 
 " Illuminate
 let g:Illuminate_ftblacklist = ['nerdtree']
@@ -115,7 +117,7 @@ nnoremap <silent> <leader>rl :wa<CR>:TestLast<CR>
 
 " Grep
 function! GitGrepWord()
-  cgetexpr system("git grep -n '" . expand("<cword>") . "'")
+  cgetexpr system("rg -n '" . expand("<cword>") . "'")
   cwin
   echo 'Number of matches: ' . len(getqflist())
 endfunction
@@ -130,6 +132,11 @@ noremap <silent> <LocalLeader>ff :Files<CR>
 noremap <silent> <LocalLeader>gf :GFiles<CR>
 noremap <silent> <LocalLeader>be :Buffers<CR>
 nnoremap <C-W>z <C-W>\|<C-W>_
+
+" copy relative file path to system clipboard
+nnoremap <silent> <LocalLeader>cf :let @*=expand("%")<CR>
+" source config
+nnoremap <LocalLeader>rr :source ~/.config/nvim/init.vim<CR>
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
