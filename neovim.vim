@@ -136,7 +136,7 @@ nnoremap <C-W>z <C-W>\|<C-W>_
 " copy relative file path to system clipboard
 nnoremap <silent> <LocalLeader>cf :let @*=expand("%")<CR>
 " source config
-nnoremap <LocalLeader>rr :source ~/.config/nvim/init.vim<CR>
+nnoremap <LocalLeader>re :source ~/.config/nvim/init.vim<CR>
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
